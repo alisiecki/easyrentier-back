@@ -1,4 +1,4 @@
-package POJOs;
+package com.ad44.springboot.er.dao.POJOs;
 
 public class Job {
 

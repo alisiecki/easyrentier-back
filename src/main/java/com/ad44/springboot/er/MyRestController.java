@@ -1,18 +1,20 @@
 package com.ad44.springboot.er;
 
 
-import POJOs.Job;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.ad44.springboot.er.dao.POJOs.Job;
+import com.ad44.springboot.er.dao.DatabaseService;
+import com.ad44.springboot.er.dao.POJOs.Order;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
-
-@RestController
+@CrossOrigin(origins = {"http://localhost:8081"})
+@RestController("/")
 public class MyRestController {
 
-
-    DatabaseService databaseService = new DatabaseService();
-
+    @Autowired
+    DatabaseService databaseService;
 
 
     @GetMapping("/jobs/all")
@@ -20,6 +22,26 @@ public class MyRestController {
 
         return databaseService.getJobs();
     }
+
+
+    @GetMapping("/getallorders")
+    public Iterable<Order> getAllOrders(){
+
+        return databaseService.getAllOrders();
+    }
+
+    @PostMapping
+    public boolean makeOrder(@RequestBody Order order){
+
+        return databaseService.addOrder(order);
+    }
+
+    @DeleteMapping
+    public boolean deleteOrder(@RequestParam int index){
+
+     return databaseService.deleteOrder(index);
+    }
+
 
 
 

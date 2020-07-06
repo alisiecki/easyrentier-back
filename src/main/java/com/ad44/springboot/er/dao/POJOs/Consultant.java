@@ -1,13 +1,22 @@
-package POJOs;
+package com.ad44.springboot.er.dao.POJOs;
 
+import javax.persistence.*;
+
+@Entity
 public class Consultant {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+
     String name;
     String surname;
     String equipment;
     String position;
+    @Transient
     String[] availabilityRegions;
+
+
 
     public Consultant(int id, String name, String surname, String equipment, String position, String[] availabilityRegions) {
         this.id = id;
@@ -15,7 +24,13 @@ public class Consultant {
         this.surname = surname;
         this.equipment = equipment;
         this.position = position;
+
+
         this.availabilityRegions = availabilityRegions;
+    }
+
+    public Consultant() {
+
     }
 
     public int getId() {
