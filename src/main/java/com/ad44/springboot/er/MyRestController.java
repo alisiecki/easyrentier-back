@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
-@CrossOrigin(origins = {"https://easyrentier-front.herokuapp.com/"})
+@CrossOrigin(origins = {"https://easyrentier-front.herokuapp.com"})
 @RestController("/")
 public class MyRestController {
 
